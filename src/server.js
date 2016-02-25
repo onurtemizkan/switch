@@ -25,6 +25,11 @@ router.route("/features/:feature_id")
     redisClient.get(req.params.feature_id, res);
   });
 
+router.route("/features/:feature_id/:feature_value")
+  .post((req, res) => {
+    res.send(redisClient.set(req.params.feature_id, req.params.feature_value));
+  });
+
 redisClient.set("hede", "hodo");
 redisClient.set("hqwede", "hweqodo");
 redisClient.set("hedweqwe", "howedo");
